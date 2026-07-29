@@ -1,43 +1,96 @@
-# 🚀 AI-DevStudio: Intelligent Code & Content SaaS Analyzer
-### 🎓 Official Capstone Project | Full-Stack Developer Track
+# AI-DevStudio: Intelligent Code & Content Analyzer
 
-An advanced, production-grade MERN Stack Micro-SaaS application engineered to analyze source code snippets and technical text assets. Built as the comprehensive **Capstone Project under the EduLinkUp Full-Stack Internship Program**, the platform runs deep structural scans to evaluate code performance metrics, detect security vulnerabilities, optimize syntax, and provide automated debugging solutions via a highly responsive dashboard workspace.
+### Capstone Project — Full-Stack Developer Track (EduLinkUp Internship)
 
----
-
-## 🛠️ Tech Stack & Architecture
-
-* **Frontend:** React.js, Tailwind CSS, Lucide Icons, Axios (State management & dynamic UI rendering)
-* **Backend:** Node.js, Express.js (Modular MVC architecture, Custom Router/Middleware pipeline)
-* **Database:** MongoDB Atlas (Mongoose schemas with transactional workflows for users, logs, and billing metrics)
-* **AI Integration:** Google Gemini API / OpenAI API SDK (Structured JSON parameter outputs)
-* **Security & Ops:** JWT (JSON Web Tokens), bcrypt.js hashing, Express Rate Limiter, CORS protection
+A MERN stack Micro-SaaS application in progress, being built to analyze source code snippets and text content — surfacing performance issues, security concerns, and SEO suggestions using an LLM API. This repo documents active development as part of the EduLinkUp Full-Stack Internship capstone.
 
 ---
 
-## 🔥 Core Features
+## Tech Stack
 
-* **🛡️ Secure Token Authentication:** Robust User sign-up and login flow powered by HTTP-Only cookie-based JWT verification.
-* **⚡ Live Code & Text Scanning:** Real-time analysis of multi-language scripts (JavaScript, Python, C++, Java) for time-complexity ($O(N)$ syntax mapping) and syntax errors.
-* **🧠 Deep AI Diagnostic Engine:** Automated identification of security threats (SQL injections, XSS leaks) with structural fixes generated dynamically.
-* **⏳ Rate-Limiting & API Shield:** Custom middleware thresholds protecting API endpoints against concurrent request flooding or DDoS patterns.
-* **📊 Analytics Dashboard:** Interactive usage history maps, processing latencies, and total tokens tracked seamlessly per session.
+- **Frontend:** React.js, Tailwind CSS, Axios
+- **Backend:** Node.js, Express.js (MVC structure)
+- **Database:** MongoDB Atlas (Mongoose)
+- **AI Integration:** Google Gemini API (planned)
+- **Auth:** JWT, bcrypt.js
+- **Payments:** Razorpay/Stripe sandbox (planned)
 
 ---
 
-## 📁 System Architecture & Directory Layout
+## Project Status
+
+🚧 **Actively in development.** Currently in the backend foundation phase.
+
+| Feature | Status |
+|---|---|
+| Project scaffolding (backend/frontend structure) | ✅ Done |
+| MongoDB Atlas connection | ✅ Done |
+| User model / schema | ✅ Done |
+| JWT authentication (register/login) | 🔜 In progress |
+| Gemini API integration for code analysis | ⏳ Planned |
+| Gemini API integration for content/SEO analysis | ⏳ Planned |
+| Rate limiting (free tier usage caps) | ⏳ Planned |
+| Payment gateway sandbox integration | ⏳ Planned |
+| Frontend UI (Analyzer, Dashboard, History) | ⏳ Planned |
+| Deployment (Render + Vercel) | ⏳ Planned |
+
+---
+
+## Directory Structure
 
 ```text
-ai-devstudio/
+Code-Analyzer/
 ├── backend/
-│   ├── config/          # Database & AI service initializers
-│   ├── controllers/     # Business execution logic (Auth, AI Processing)
-│   ├── middleware/      # JWT guards, validation filters, rate-limiters
-│   ├── models/          # Mongoose structured Data Schemas
-│   ├── routes/          # Express API endpoint declarations
-│   └── server.js        # Runtime entry point
+│   ├── src/
+│   │   ├── config/          # DB connection
+│   │   ├── controllers/     # Route logic
+│   │   ├── middleware/      # Auth guards, rate limiting
+│   │   ├── models/          # Mongoose schemas
+│   │   ├── routes/          # API endpoints
+│   │   ├── services/        # LLM API, payment logic
+│   │   └── app.js
+│   └── server.js
 └── frontend/
-    ├── src/
-    │   ├── components/  # Reusable UI Atoms (Navbar, Analyzer Forms)
-    │   ├── pages/       # Dashboard, Authentication Screens
-    │   └── utils/       # API base connection drivers
+    └── src/
+        ├── components/
+        ├── pages/
+        ├── context/
+        └── services/
+```
+
+---
+
+## Planned Core Features
+
+- Secure JWT-based authentication
+- Code snippet analysis: performance notes, security issue flags
+- Blog/content draft analysis: SEO suggestions
+- Free tier (limited daily analyses) vs paid tier via payment sandbox
+- Analysis history dashboard
+
+---
+
+## Setup
+
+```bash
+# Backend
+cd backend
+npm install
+npm run dev
+
+# Frontend (once scaffolded)
+cd frontend
+npm install
+npm run dev
+```
+
+Environment variables required (`backend/.env`):
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+---
+
+*This README will be updated feature-by-feature as development progresses.*
