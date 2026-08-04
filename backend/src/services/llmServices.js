@@ -9,17 +9,23 @@ const cleanJsonResponse = (text) => {
 };
 
 const analyzeCode = async (code) => {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
   const result = await model.generateContent(codeAnalysisPrompt(code));
   const responseText = result.response.text();
-  return JSON.parse(cleanJsonResponse(responseText));
+  const parsed = JSON.parse(cleanJsonResponse(responseText));
+
+  const tokensUsed = result.response.usageMetadata?.totalTokenCount || 0;
+
+  return { ...parsed, tokensUsed };
 };
 
 const analyzeContent = async (text) => {
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });  
   const result = await model.generateContent(contentAnalysisPrompt(text));
   const responseText = result.response.text();
-  return JSON.parse(cleanJsonResponse(responseText));
+  const parsed = JSON.parse(cleanJsonResponse(responseText));
+  const tokensUsed = result.response.usageMetadata?.totalTokenCount || 0;
+  return { ...parsed, tokensUsed };
 };
 
 module.exports = { analyzeCode, analyzeContent };
