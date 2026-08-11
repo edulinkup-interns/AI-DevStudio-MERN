@@ -16,7 +16,7 @@ const analysisSchema = new mongoose.Schema({
     required: true,
   },
   result: {
-    type: Object,
+    type: Object, //Code scan aur Content scan ke response fields 100% alag hote hain. Database me bina kisi restriction ke dono ka raw JSON data save ho sake, isiliye type ko Object rakha hai.
     required: true,
   },
   // --- Naye fields, analytics ke liye ---
@@ -40,6 +40,6 @@ const analysisSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Compound index — filtering by user + date range bahut fast query banayega
-analysisSchema.index({ user: 1, createdAt: -1 });
+analysisSchema.index({ user: 1, createdAt: -1 }); //user ascending order and createdat descending order 
 
 module.exports = mongoose.model('Analysis', analysisSchema);

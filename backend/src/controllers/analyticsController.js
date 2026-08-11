@@ -24,9 +24,10 @@ const getSummary = async (req, res) => {
 
     const summary = await Analysis.aggregate([
       { $match: match },
+      // No matter how many different programming languages the user has scanned—whether it's 10 JavaScript files, 5 Python scripts, or 2 C++ programs—the $match stage isolates all scans belonging to that specific user, and then _id: null lumps all of those scans into one combined group.
       {
         $group: {
-          _id: null,
+          _id: null, // not to split the documents into separate categories (like language or date).
           totalScans: { $sum: 1 },
           avgComplexity: { $avg: '$complexityScore' },
           totalTokens: { $sum: '$tokensUsed' },
