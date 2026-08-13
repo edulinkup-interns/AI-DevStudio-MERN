@@ -3,6 +3,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import Analyzer from './pages/Analyzer.jsx';
 
 function App() {
   return (
@@ -17,9 +18,17 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
         }
+      />  
+      <Route
+        path="/analyzer"
+        element={
+          <ProtectedRoute>
+            <Analyzer/>
+          </ProtectedRoute>
+        }
       />
-      
     </Routes>
+    
   );
 }
 

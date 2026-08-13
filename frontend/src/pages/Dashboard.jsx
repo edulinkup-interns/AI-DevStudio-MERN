@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.js';
 
 const Dashboard = () => {
@@ -14,7 +15,19 @@ const Dashboard = () => {
           Logout
         </button>
       </div>
-      <p className="text-slate-400">Dashboard content coming soon...</p>
+
+      <div className="flex gap-4">
+        <Link
+          to="/analyzer"
+          className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg"
+        >
+          Go to Analyzer
+        </Link>
+      </div>
+
+      <p className="text-slate-400 mt-6">
+        Analytics charts coming soon...
+      </p>
     </div>
   );
 };
